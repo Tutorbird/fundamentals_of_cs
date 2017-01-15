@@ -24,11 +24,13 @@ def name_to_number(name):
 
 
 def number_to_name(number):
-    # delete the following pass statement and fill in your code below
-    pass
-    
-    # convert number to a name using if/elif/else
-    # don't forget to return the result!
+    return {
+        0: 'rock',
+        1: 'Spock',
+        2: 'paper',
+        3: 'lizard',
+        4: 'scissors'
+    }.get(number, None)
     
 
 def rpsls(player_choice): 

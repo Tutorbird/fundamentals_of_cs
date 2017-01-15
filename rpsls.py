@@ -43,17 +43,17 @@ def rpsls(player_choice):
     player_number = name_to_number(player_choice)
     comp_number = random.randrange(0, 5)
     computer_choice = number_to_name(comp_number)
-    difference = comp_number - player_number % 5
+    difference = (comp_number - player_number) % 5
 
     if difference > 2 :
         print_screen(player_choice, computer_choice)
-        print "Computer wins!"
+        print "Player wins!"
     elif difference == 0 :
         print_screen(player_choice, computer_choice)
         print "Player and computer tie!"
     else:
         print_screen(player_choice, computer_choice)
-        print "Player wins!"
+        print "Computer wins!"
 
     print ""
     return None

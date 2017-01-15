@@ -1,4 +1,5 @@
 # Rock-paper-scissors-lizard-Spock template
+# Nestor Alvarez, 2070115
 import random
 
 # The key idea of this program is to equate the strings
@@ -39,7 +40,6 @@ def print_screen(player_choice, computer_choice):
 def rpsls(player_choice): 
     # delete the following pass statement and fill in your code below
 
-    print '\n'
     player_number = name_to_number(player_choice)
     comp_number = random.randrange(0, 5)
     computer_choice = number_to_name(comp_number)
@@ -55,21 +55,8 @@ def rpsls(player_choice):
         print_screen(player_choice, computer_choice)
         print "Player wins!"
 
-    # print a blank line to separate consecutive games
-
-    # print out the message for the player's choice
-
-    # convert the player's choice to player_number using the function name_to_number()
-
-    # compute random guess for comp_number using random.randrange()
-
-    # convert comp_number to comp_choice using the function number_to_name()
-    
-    # print out the message for computer's choice
-
-    # compute difference of comp_number and player_number modulo five
-
-    # use if/elif/else to determine winner, print winner message
+    print ""
+    return None
 
     
 # test your code - THESE CALLS MUST BE PRESENT IN YOUR SUBMITTED CODE

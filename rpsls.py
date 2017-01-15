@@ -33,8 +33,8 @@ def number_to_name(number):
     }.get(number, None)
 
 def print_screen(player_choice, computer_choice):
-    print "Player chooses %s", player_choice
-    print "Computer chooses %s", computer_choice
+    print "Player chooses", player_choice
+    print "Computer chooses", computer_choice
 
 def rpsls(player_choice): 
     # delete the following pass statement and fill in your code below
@@ -48,6 +48,9 @@ def rpsls(player_choice):
     if difference > 2 :
         print_screen(player_choice, computer_choice)
         print "Computer wins!"
+    elif difference == 0 :
+        print_screen(player_choice, computer_choice)
+        print "Player and computer tie!"
     else:
         print_screen(player_choice, computer_choice)
         print "Player wins!"

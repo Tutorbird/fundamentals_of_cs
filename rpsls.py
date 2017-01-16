@@ -1,6 +1,7 @@
 # Rock-paper-scissors-lizard-Spock template
 # Nestor Alvarez, 2070115
 import random
+import simplegui
 
 # The key idea of this program is to equate the strings
 # "rock", "paper", "scissors", "lizard", "Spock" to numbers
@@ -57,6 +58,25 @@ def rpsls(player_choice):
 
     print ""
     return None
+
+def get_guess(guess):
+    
+    # validate input
+    if guess not in ["Spock", "rock", "paper", "scissors", "lizard"]:
+        print
+        print 'Error: Bad input "' + guess + '" to rpsls'
+        return
+    else:
+        rpsls(guess)
+    
+
+# Create frame and assign callbacks to event handlers
+frame = simplegui.create_frame("GUI-based RPSLS", 200, 200)
+frame.add_input("Enter guess for RPSLS", get_guess, 200)
+
+
+# Start the frame animation
+frame.start()
 
     
 # test your code - THESE CALLS MUST BE PRESENT IN YOUR SUBMITTED CODE

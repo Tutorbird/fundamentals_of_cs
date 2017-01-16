@@ -9,10 +9,6 @@ secret_range = 100
 guesses = 0
 
 # helper function to start and restart the game
-def decrement():
-    global guesses
-    guesses -= 1
-    return None
 
 def new_game():
     """ 
@@ -25,6 +21,11 @@ def new_game():
     guesses = int(math.ceil(math.log(secret_range - 1) / math.log(2)))
     return None 
 
+def decrement():
+    global guesses
+    guesses -= 1
+    return None
+
 def validate(guess):
     try:
         int(guess)
@@ -33,6 +34,21 @@ def validate(guess):
         print "Oops!  That was not a valid number.  Try again..."
     return None
 
+def print_screen(flag, guess):
+    # -1 is lower, 0 is equal, 1 is higher
+    print "Guess was", guess
+    print "Number of guesses left:", guesses
+    
+    if flag == -1:
+        print "Lower!"
+    elif flag == 0:
+        print "Correct!"
+    elif flag == 1:
+        print "Higher!"
+    else:
+        print "Something weird happen. Our top coding monkeys are on it."
+    return None
+        
 # define event handlers for control panel
 def range100():
     global secret_range 
@@ -50,7 +66,17 @@ def input_guess(guess):
     # main game logic goes here 
     guess = validate(guess)
     if guess is not None:
-        print "Guess was", guess
+        decrement()
+        if guesses == -1:
+            print "\nYou are out of guesses"
+            print "Starting new game... \n"
+            new_game()
+        elif guess > secret_number:
+            print_screen(1, guess)
+        elif guess == secret_number:
+            print_screen(0, guess)
+        else:
+            print_screen(-1, guess)
 
     
 # create frame

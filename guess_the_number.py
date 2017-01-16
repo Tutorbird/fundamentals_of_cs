@@ -81,16 +81,16 @@ def input_guess(guess):
     guess = validate(guess)
     if guess is not None:
         decrement()
-        if guesses == -1:
-            print "\nYou are out of guesses"
-            print "Starting new game... \n"
-            new_game()
-        elif guess < secret_number:
+        if guess < secret_number:
             print_screen(1, guess)
         elif guess == secret_number:
             print_screen(0, guess)
         else:
             print_screen(-1, guess)
+    if guesses == 0:
+        print "\nYou are out of guesses"
+        print "Starting new game... \n"
+        new_game()
 
     
 # create frame

@@ -49,23 +49,20 @@ def time_handler():
     message = format(deciseconds)
     return None
 
+# define draw handler
 def draw_handler(canvas):
     scoreboard = "%d/%d" % (score, attempts)
     canvas.draw_text(scoreboard, (200, 50), 20, 'Green')
     canvas.draw_text(message, (95, 110), 40, 'Red')
-
-# define draw handler
-
     
 # create frame
-
+frame = simplegui.create_frame("Stopwatch!", 300, 200)
+frame.add_button("Start", start, 200)
+frame.add_button("Stop", stop, 200)
+frame.add_button("Reset", reset, 200)
 
 # register event handlers
-frame = simplegui.create_frame("Stopwatch!", 300, 200)
 timer = simplegui.create_timer(100, time_handler)
-frame.add_button("Stop", stop, 200)
-frame.add_button("Start", start, 200)
-frame.add_button("Reset", reset, 200)
 frame.set_draw_handler(draw_handler)
 
 # start frame

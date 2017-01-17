@@ -5,7 +5,7 @@ import time, simplegui, math
 deciseconds = 0
 attempts = 0
 score = 0
-message = "0:00:00"
+message = "0:00:0"
 stopped = True
 
 # define helper function format that converts time
@@ -16,7 +16,7 @@ def format(t):
     tenths = deciseconds % 10
     secs = (deciseconds // 10) % 60
     mins = (deciseconds // 600) % 60
-    return "%d:%02d:%02d" % (mins, secs, tenths)
+    return "%d:%02d:%d" % (mins, secs, tenths)
     
 # define event handlers for buttons; "Start", "Stop", "Reset"
 def start():
@@ -37,7 +37,7 @@ def stop():
 def reset():
     global stopped, attempts, score, deciseconds, message
     stopped = True
-    message = "0:00:00"
+    message = "0:00:0"
     timer.stop()
     attempts =  score = deciseconds = 0
 

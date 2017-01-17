@@ -19,6 +19,10 @@ def time_handler():
     print deciseconds
     return None
 
+def draw_handler(canvas):
+    canvas.draw_text('X / Y', (200, 50), 20, 'Green')
+    canvas.draw_text('0:00:0', (95, 110), 40, 'Red')
+
 # define draw handler
 
     
@@ -29,7 +33,7 @@ def time_handler():
 frame = simplegui.create_frame("Stopwatch!", 300, 200)
 timer = simplegui.create_timer(100, time_handler)
 #frame.add_button("Click me", click)
-#frame.set_draw_handler(draw)
+frame.set_draw_handler(draw_handler)
 
 # start frame
 frame.start()

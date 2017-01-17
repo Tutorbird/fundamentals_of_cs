@@ -1,5 +1,5 @@
 # Nestor Alvarez, 20170116
-import time, simplegui
+import time, simplegui, math
 
 # define global variables
 deciseconds = 0
@@ -52,6 +52,9 @@ def time_handler():
 # define draw handler
 def draw_handler(canvas):
     scoreboard = "%d/%d" % (score, attempts)
+    if attempts > 0:
+        percentage = "%02d%" % round((float(score) / attempts) * 100)
+        canvas.draw_text(percentage, (200, 200), 20, 'Red')
     canvas.draw_text(scoreboard, (200, 50), 20, 'Green')
     canvas.draw_text(message, (95, 110), 40, 'Red')
     

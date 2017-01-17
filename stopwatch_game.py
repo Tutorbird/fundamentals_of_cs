@@ -5,7 +5,8 @@ import time, simplegui
 deciseconds = 0
 attempts = 0
 score = 0
-message = "0:00:0"
+message = "0:00:00"
+stopped = True
 
 # define helper function format that converts time
 # in tenths of seconds into formatted string A:BC.D
@@ -19,13 +20,26 @@ def format(t):
     
 # define event handlers for buttons; "Start", "Stop", "Reset"
 def start():
-    pass
+    global stopped
+    if stopped:
+        stopped = False
+        timer.start()
 
 def stop():
-    pass
+    global stopped, attempts, score
+    if not stopped:
+        timer.stop()
+        stopped = True
+        attempts += 1
+        if (deciseconds % 10 == 0):
+            score += 1
 
 def reset():
-    pass
+    global stopped, attempts, score, deciseconds, message
+    stopped = True
+    message = "0:00:00"
+    timer.stop()
+    attempts =  score = deciseconds = 0
 
 # define event handler for timer with 0.1 sec interval
 def time_handler():
@@ -56,6 +70,5 @@ frame.set_draw_handler(draw_handler)
 
 # start frame
 frame.start()
-timer.start()
 
 # Please remember to review the grading rubric

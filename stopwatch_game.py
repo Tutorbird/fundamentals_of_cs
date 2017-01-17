@@ -23,12 +23,13 @@ def format(t):
 # define event handler for timer with 0.1 sec interval
 def time_handler():
     global deciseconds
+    global message
     deciseconds += 1
-    print format(deciseconds)
+    message = format(deciseconds)
     return None
 
 def draw_handler(canvas):
-    scoreboard = "" +  str(score) + "/" + str(attempts) + ""
+    scoreboard = "%d/%d" % (score, attempts)
     canvas.draw_text(scoreboard, (200, 50), 20, 'Green')
     canvas.draw_text(message, (95, 110), 40, 'Red')
 

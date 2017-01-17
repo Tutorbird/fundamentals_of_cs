@@ -10,7 +10,12 @@ message = "0:00:0"
 # define helper function format that converts time
 # in tenths of seconds into formatted string A:BC.D
 def format(t):
-    pass
+    # Seconds = decisecond / 10
+    # Minutes = seconds / 60
+    tenths = deciseconds % 10
+    secs = (deciseconds // 10) % 60
+    mins = (deciseconds // 600) % 60
+    return "%d:%02d:%02d" % (mins, secs, tenths)
     
 # define event handlers for buttons; "Start", "Stop", "Reset"
 
@@ -19,7 +24,7 @@ def format(t):
 def time_handler():
     global deciseconds
     deciseconds += 1
-    print deciseconds
+    print format(deciseconds)
     return None
 
 def draw_handler(canvas):

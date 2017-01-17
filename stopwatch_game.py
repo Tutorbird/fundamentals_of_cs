@@ -18,7 +18,14 @@ def format(t):
     return "%d:%02d:%02d" % (mins, secs, tenths)
     
 # define event handlers for buttons; "Start", "Stop", "Reset"
+def start():
+    pass
 
+def stop():
+    pass
+
+def reset():
+    pass
 
 # define event handler for timer with 0.1 sec interval
 def time_handler():
@@ -42,7 +49,9 @@ def draw_handler(canvas):
 # register event handlers
 frame = simplegui.create_frame("Stopwatch!", 300, 200)
 timer = simplegui.create_timer(100, time_handler)
-#frame.add_button("Click me", click)
+frame.add_button("Stop", stop, 200)
+frame.add_button("Start", start, 200)
+frame.add_button("Reset", reset, 200)
 frame.set_draw_handler(draw_handler)
 
 # start frame

@@ -111,13 +111,13 @@ def keydown(key):
     global PADDLE1_VEL, PADDLE2_VEL
 
     if key == simplegui.KEY_MAP['up']:
-        PADDLE1_VEL = -5
+        PADDLE1_VEL = -10
     elif key == simplegui.KEY_MAP['down']:
-        PADDLE1_VEL = 5
+        PADDLE1_VEL = 10
     elif key == simplegui.KEY_MAP['w']:
-        PADDLE2_VEL = -5
+        PADDLE2_VEL = -10
     elif key == simplegui.KEY_MAP['s']:
-        PADDLE2_VEL = 5
+        PADDLE2_VEL = 10
    
 def keyup(key):
     global PADDLE1_VEL, PADDLE2_VEL

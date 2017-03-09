@@ -21,9 +21,9 @@ def mouseclick(pos):
 # cards are logically 50x100 pixels in size    
 def draw(canvas):
     global deck
-    count = 1
+    count = 0
     for n in deck: 
-        canvas.draw_text(" " + str(n), (count * 45, 75), 80, "Red")
+        canvas.draw_text(str(n), ((count * 50), 75), 80, "Red")
         count += 1
     pass
 

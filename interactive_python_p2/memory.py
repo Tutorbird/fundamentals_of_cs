@@ -5,6 +5,10 @@ import random
 
 # helper function to initialize globals
 def new_game():
+    global deck
+    deck = range(0,8)
+    deck.extend(deck)
+    random.shuffle(deck)
     pass  
 
      
@@ -16,6 +20,11 @@ def mouseclick(pos):
                         
 # cards are logically 50x100 pixels in size    
 def draw(canvas):
+    global deck
+    count = 1
+    for n in deck: 
+        canvas.draw_text(" " + str(n), (count * 45, 75), 80, "Red")
+        count += 1
     pass
 
 

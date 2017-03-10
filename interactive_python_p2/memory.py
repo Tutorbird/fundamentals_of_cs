@@ -6,6 +6,7 @@ import simplegui, random
 
 CARD_WIDTH = 50
 CARD_LENGTH = 100
+COUNT = 0
 
 # helper function to initialize globals
 def new_game():
@@ -16,13 +17,13 @@ def new_game():
     exposed = [0] * 16
     cleared = [0] * 16
     prev = -1
+    COUNT = 0
     pass  
 
      
 # define event handlers
 def mouseclick(pos):
-    global prev, count
-    count = 0
+    global prev, COUNT
     card_pos = pos[0] / 50
     if prev != card_pos:
         if exposed[card_pos] == 0:
@@ -32,8 +33,8 @@ def mouseclick(pos):
             exposed[card_pos] = 0
             prev = card_pos
     else:
-        count += 1
-        if deck[prev] == deck[card_pos]:
+        COUNT += 1
+        if deck[prev] == deck[card_pos] and prev != card_pos:
             cleared[prev] = 1
             cleared[card_pos] = 1
     pass
@@ -59,7 +60,7 @@ def draw(canvas):
 # create frame and add a button and labels
 frame = simplegui.create_frame("Memory", 800, 100)
 frame.add_button("Reset", new_game)
-label = frame.add_label("Turns = 0")
+label = frame.add_label("Turns = ")
 
 # register event handlers
 frame.set_mouseclick_handler(mouseclick)

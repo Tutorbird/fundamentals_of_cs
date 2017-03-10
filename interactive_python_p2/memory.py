@@ -21,7 +21,8 @@ def new_game():
      
 # define event handlers
 def mouseclick(pos):
-    global prev
+    global prev, count
+    count = 0
     card_pos = pos[0] / 50
     if prev != card_pos:
         if exposed[card_pos] == 0:
@@ -30,6 +31,11 @@ def mouseclick(pos):
         else:
             exposed[card_pos] = 0
             prev = card_pos
+    else:
+        count += 1
+        if deck[prev] == deck[card_pos]:
+            cleared[prev] = 1
+            cleared[card_pos] = 1
     pass
     
                         

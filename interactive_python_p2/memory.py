@@ -9,29 +9,35 @@ CARD_LENGTH = 100
 
 # helper function to initialize globals
 def new_game():
-    global deck, exposed
+    global deck, exposed, cleared, prev
     deck = range(0, 8)
     deck.extend(deck)
     random.shuffle(deck)
     exposed = [0] * 16
+    cleared = [0] * 16
+    prev = -1
     pass  
 
      
 # define event handlers
 def mouseclick(pos):
+    global prev
     card_pos = pos[0] / 50
-    if exposed[card_pos] == 0:
-        exposed[card_pos] = 1
-    else:
-        exposed[card_pos] = 0
+    if prev != card_pos:
+        if exposed[card_pos] == 0:
+            exposed[card_pos] = 1
+            prev = card_pos
+        else:
+            exposed[card_pos] = 0
+            prev = card_pos
     pass
     
                         
 # cards are logically 50x100 pixels in size    
 def draw(canvas):
-    global deck, CARD_WIDTH, CARD_LENGTH
+    global CARD_WIDTH, CARD_LENGTH
     for n in range(len(deck)): 
-        if (exposed[n] == 1):
+        if (exposed[n] == 1 or cleared[n] == 1):
             canvas.draw_text(str(deck[n]), ((n * CARD_WIDTH), 75), 80, "Red")
         else:
             point_coords = [
